@@ -3,10 +3,6 @@ import matplotlib.pyplot as plt
 from matplotlib.dates import date2num
 import datetime
 
-#import plotly.plotly as py
-# Learn about API authentication here: https://plot.ly/python/getting-started
-# Find your api_key here: https://plot.ly/settings/api
-
 
 '''
 Openness	0.6618	0.6599	0.64	0.6522
@@ -22,23 +18,6 @@ Extrovertion		0.7877	0.7721	0.7872
 Neuroticism		0.7937	0.7867	0.7989
 Conscientiousness		0.7042	0.6944	0.7077
 '''
-'''
-x = [datetime.datetime(2011, 1, 4, 0, 0),
-     datetime.datetime(2011, 1, 5, 0, 0),
-     datetime.datetime(2011, 1, 6, 0, 0)]
-x = date2num(x)
-
-y = [4, 9, 2]
-z=[1,2,3]
-k=[11,12,13]
-
-ax = plt.subplot(111)
-ax.bar(x-0.2, y,width=0.2,color='b',align='center')
-ax.bar(x, z,width=0.2,color='g',align='center')
-ax.bar(x+0.2, k,width=0.2,color='r',align='center')
-ax.xaxis_date()
-
-plt.show()'''
 
 wo = [0.8064, 0.8093,	0.7814,	0.7968]
 w = [0.7932, 0.7877,	0.7721,	0.7872]
@@ -55,11 +34,6 @@ ax1.legend()
 #ax1.grid()
 plt.ylim((0,1.05))
 plt.xlim((0,3))
-#ax1.bar([y+0.1 for y in y_pos], dt, width=0.1,color='r',align='center',alpha=0.5 )
-
-#plt.bar(y_pos, svrrbf,width=0.2,color='g',align='center',alpha=0.5 )
-#ax1.bar(len(dt), dt,width=0.2,color='r',align='center')
-#ax1.xaxis_date()
 
 
 def autolabel(rects, order):
@@ -75,8 +49,6 @@ def autolabel(rects, order):
 
 autolabel(xx,1)
 autolabel(xxx,2)
-
-#plt.show()
 
 plt.savefig('8_Extrovertion.eps', bbox_inches='tight')
 
