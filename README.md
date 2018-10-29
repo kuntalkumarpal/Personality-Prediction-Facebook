@@ -10,6 +10,16 @@ This contains the implementation of the paper [Predicting facebook-users' person
 ### Requirements
 * Python 2.7
 * Numpy
+* matplotlib 
+* pandas
+* sklearn
+* scipy
+* random
+* collections
+* datetime
+* gensim
+* cPickle
+* nltk
 
 
 ### Files :
@@ -24,11 +34,12 @@ This contains the implementation of the paper [Predicting facebook-users' person
 * Calc_BIG5_SvrPoly_Topics_Liwc.py - The main code to generate the BIG5 scores based on Topics along with LIWC features (SVR Polynomial kernels)
 * Calc_BIG5_SvrPoly_Topics_Liwc_DecTree.py - The main code to generate the BIG5 scores based on only Topics (Decision Trees)
 * Calc_BIG5_SvrPoly_only_Topics_DecTree.py - The main code to generate the BIG5 scores based on Topics along with LIWC features (Decision Trees)
+* GraphCode/ - Folder contains code to generate various graphs from data
+* RCommands.txt - This file contains a number of intermediate preprocessings commands in R
 
 ### Note :
 * The code have various hardcoding.
 * Parameter setup is present in the files itself.
-* The code was written some time  back and was not at all maintained since then. Now its being arranged from the bits and pieces found. So there may be inconsistencies
+* The code was written some time  back and was not at all maintained since then. Now its being arranged from the bits and pieces found. So there may be inconsistencies.
 * The code is not well structured and designed in some areas.
-* No separate training, validations and testing modules all are done sequentially together in same function
-* The naming of the files are inconsistent.
+* No separate training, validations and testing modules
