@@ -1,0 +1,87 @@
+new_liwc_aggr <- merge(liwc_aggr,new_id_merged_status,by='userid')
+> new_liwc_aggr$message=NULL
+> new_liwc_aggr$X1=NULL
+
+
+
+
+
+#Clean 303 blank entries
+id_tokens_filter <- id_tokens_dict_corpus_len[!grepl("00BLANK00", id_tokens_dict_corpus_len$tokens), ]
+
+
+#Take only those where len of dictiomary of words in status >=500
+id_tokens_filter2 = id_tokens_filter[id_tokens_filter$len >= 500,]
+
+
+id_tokens_filter3 = merge(id_tokens_filter2, new_big5, by = "userid")
+id_tokens_filter4 = merge(id_tokens_filter3, liwc_aggr, by = "userid")
+
+id_tokens_filter3$blocks = NULL
+id_tokens_filter3$date = NULL
+id_tokens_filter3$item_level = NULL
+
+
+
+
+id_tokens_filter5000 = id_tokens_filter[id_tokens_filter$len >= 4000,]
+big_id_merged_status <- merge(id_merged_status_clean,id_tokens_filter5000,by='userid')
+big_id_merged_status$tokens=NULL
+big_id_merged_status$dict=NULL
+big_id_merged_status$corpus=NULL
+big_id_merged_status$len=NULL
+
+dfNormZ <- as.data.frame( scale(df[1:2] ))
+===================================================================================================================
+Reducing Dimentionality
+===================================================================================================================
+library("caret")
+setwd("~/FB/18062017/")
+liwc1 = read.csv("final_liwc.csv")
+
+liwc1[,-c(1:2)] <- scale(liwc1[,-c(1:2)])
+
+liwc3 = liwc1[,-c(1:2)]
+
+liwc2 =cor(liwc1[,-c(1:2)])
+hc = findCorrelation(liwc2, cutoff=0.6)
+hc = sort(hc)
+reduced_Data = liwc3[,-c(hc)]
+
+namelist = c(colnames(reduced_Data))
+idx <- match(namelist, names(liwc1))
+idx <- sort(idx)
+
+reduced_liwc <- liwc1[,c(2,idx)] 
+write.csv(reduced_liwc, file="reduced_liwc.csv")
+
+
+===================================================================================================================
+merge id_topics and liwc_big5 data
+===================================================================================================================
+
+
+> View(liwc_big5_48K)
+> reg_input_0.1 = merge(id_topics_0_1,liwc_big5_48K,by="userid")
+> View(reg_input_0.1)
+> reg_input_0.1$X1=NULL
+> write.csv(reg_input_0.1,file="reg_input_0.1.csv")
+
+
+
+===================================================================================================================
+mean std dev
+===================================================================================================================
+
+xxx <- liwc_big5_48K[,c("ope","agr","ext","neu", "con")]
+as.data.frame( t(sapply(xxx, function(cl) list(means=mean(cl,na.rm=TRUE),sds=sd(cl,na.rm=TRUE))) ))
+
+      means       sds
+ope 3.912669 0.6592319
+agr 3.562032 0.7080322
+ext 3.585833 0.8069222
+neu 2.772607 0.8098645
+con 3.453712 0.7301083
+
+
+
