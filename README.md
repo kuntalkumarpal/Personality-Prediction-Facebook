@@ -4,7 +4,7 @@ Predicting facebook-users' personality based on status and linguistic features v
 This contains the implementation of the paper [Predicting facebook-users' personality based on status and linguistic features via flexible regression analysis techniques](https://dl.acm.org/citation.cfm?id=3167166)
 
 ### Data :
-* [MyPersonality](https://sites.google.com/michalkosinski.com/mypersonality)
+* [MyPersonality](https://sites.google.com/michalkosinski.com/mypersonality) [Update : I do not have the data. It is lost in transition]
 * We used a cutdown version of the data which had 48701 records of unique userid
 
 ### Requirements
